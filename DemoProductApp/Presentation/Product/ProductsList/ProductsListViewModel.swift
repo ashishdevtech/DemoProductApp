@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class ProductsListViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
@@ -37,4 +38,3 @@ final class ProductsListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
-

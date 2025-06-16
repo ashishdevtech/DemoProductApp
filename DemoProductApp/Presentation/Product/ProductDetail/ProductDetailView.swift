@@ -34,11 +34,6 @@ struct ProductDetailView: View {
 
                 Text(viewModel.product.description)
                     .font(.body)
-
-                Button("See Reviews") {
-                    viewModel.goToReviews()
-                }
-                .padding(.top)
             }
             .padding()
         }

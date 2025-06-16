@@ -18,12 +18,8 @@ final class AppCoordinator: ObservableObject {
     func buildView(for destination: ProductDestination) -> some View {
         switch destination {
         case .productDetail(let product):
-            let viewModel = ProductDetailViewModel(product: product, coordinator: self)
-            return ProductDetailView(viewModel: viewModel).eraseToAnyView()
-
-        case .productReviews(let reviews):
-            let viewModel = ProductReviewsViewModel(reviews: reviews)
-            return ProductReviewsView(viewModel: viewModel).eraseToAnyView()
+            let viewModel = ProductDetailViewModel(product: product)
+            return ProductDetailView(viewModel: viewModel)
         }
     }
 

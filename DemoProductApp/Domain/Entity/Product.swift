@@ -13,6 +13,5 @@ struct Product: Identifiable, Hashable {
     let price: Double
     let thumbnail: String
     let description: String
-    let reviews: [Review]
 }
 

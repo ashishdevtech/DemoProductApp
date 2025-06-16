@@ -44,6 +44,15 @@ struct ProductsListView: View {
                 viewModel.loadProducts()
             }
         }
+        .overlay {
+            if viewModel.isLoading {
+                ProgressView()
+            } else if let error = viewModel.errorMessage {
+                Text(error)
+                    .foregroundColor(.red)
+                    .padding()
+            }
+        }
         .navigationTitle("Products")
     }
 }
