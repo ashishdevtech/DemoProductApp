@@ -1,5 +1,5 @@
 //
-//  TestAppCoordinator.swift
+//  AppCoordinatorTests.swift
 //  DemoProductAppTests
 //
 //  Created by Ashish Pal on 16/06/25.

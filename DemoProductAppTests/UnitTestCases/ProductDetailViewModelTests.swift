@@ -18,9 +18,3 @@ final class ProductDetailViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.product.price, product.price)
     }
 }
-
-final class DummyCoordinator: ProductCoordinator {
-    func push(_ destination: ProductDestination) {}
-    func pop() {}
-    func popToRoot() {}
-}
