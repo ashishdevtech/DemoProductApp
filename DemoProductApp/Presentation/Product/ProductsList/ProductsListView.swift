@@ -39,8 +39,10 @@ struct ProductsListView: View {
                 }
             }
         }
-        .task {
-            await viewModel.loadProducts()
+        .onAppear {
+            if viewModel.products.isEmpty {
+                viewModel.loadProducts()
+            }
         }
         .navigationTitle("Products")
     }

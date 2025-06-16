@@ -14,7 +14,9 @@ struct RootView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ProductsListView(
-                viewModel: ProductsListViewModel(fetchProductsUseCase: FetchProductsUseCaseImpl()),
+                viewModel: ProductsListViewModel(
+                    fetchProductsUseCase: DIContainer.shared.fetchProductsUseCase
+                ),
                 router: ProductListRouter(coordinator: coordinator)
             )
             .navigationDestination(for: ProductDestination.self) { destination in

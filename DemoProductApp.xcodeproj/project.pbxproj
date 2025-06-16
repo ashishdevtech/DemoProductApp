@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0201A12E00559C00A71020 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0201A02E00559C00A71020 /* ProductRepository.swift */; };
+		BD0201A42E005AF100A71020 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0201A32E005AF100A71020 /* DIContainer.swift */; };
 		BDDF16072E0005D400530378 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16062E0005D400530378 /* MainApp.swift */; };
 		BDDF160B2E0005DA00530378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDF160A2E0005DA00530378 /* Assets.xcassets */; };
 		BDDF160E2E0005DA00530378 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDF160D2E0005DA00530378 /* Preview Assets.xcassets */; };
@@ -16,7 +18,7 @@
 		BDDF16332E00065C00530378 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16322E00065C00530378 /* AppCoordinator.swift */; };
 		BDDF16352E00068300530378 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16342E00068300530378 /* Product.swift */; };
 		BDDF16372E00069300530378 /* FetchProductsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16362E00069300530378 /* FetchProductsUseCase.swift */; };
-		BDDF16392E0006A600530378 /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16382E0006A600530378 /* ProductAPI.swift */; };
+		BDDF16392E0006A600530378 /* ProductRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF16382E0006A600530378 /* ProductRepositoryImpl.swift */; };
 		BDDF163B2E0006CF00530378 /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF163A2E0006CF00530378 /* ProductsListViewModel.swift */; };
 		BDDF163D2E0006E900530378 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF163C2E0006E900530378 /* ProductRouter.swift */; };
 		BDDF163F2E0006F700530378 /* ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF163E2E0006F700530378 /* ProductsListView.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0201A02E00559C00A71020 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
+		BD0201A32E005AF100A71020 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		BDDF16032E0005D400530378 /* DemoProductApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProductApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDF16062E0005D400530378 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		BDDF160A2E0005DA00530378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +71,7 @@
 		BDDF16322E00065C00530378 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BDDF16342E00068300530378 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		BDDF16362E00069300530378 /* FetchProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductsUseCase.swift; sourceTree = "<group>"; };
-		BDDF16382E0006A600530378 /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
+		BDDF16382E0006A600530378 /* ProductRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryImpl.swift; sourceTree = "<group>"; };
 		BDDF163A2E0006CF00530378 /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
 		BDDF163C2E0006E900530378 /* ProductRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
 		BDDF163E2E0006F700530378 /* ProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD02019F2E0053DC00A71020 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				BD0201A02E00559C00A71020 /* ProductRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		BD0201A22E005AE700A71020 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				BD0201A32E005AF100A71020 /* DIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		BDDF15FA2E0005D400530378 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +194,7 @@
 		BDDF164A2E001AFF00530378 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BD0201A22E005AE700A71020 /* DI */,
 				BDDF16732E002D1000530378 /* View */,
 				BDDF16612E00202500530378 /* Config */,
 				BDDF165C2E001F1400530378 /* Network */,
@@ -187,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				BDDF16682E00227100530378 /* DTOs */,
-				BDDF16562E001CF500530378 /* Remote */,
+				BDDF16562E001CF500530378 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,8 +216,9 @@
 		BDDF164C2E001B0E00530378 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				BDDF16552E001C6600530378 /* UseCases */,
-				BDDF16542E001C5700530378 /* Models */,
+				BD02019F2E0053DC00A71020 /* Repository */,
+				BDDF16552E001C6600530378 /* UseCase */,
+				BDDF16542E001C5700530378 /* Entity */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -265,37 +287,29 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BDDF16542E001C5700530378 /* Models */ = {
+		BDDF16542E001C5700530378 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				BDDF16342E00068300530378 /* Product.swift */,
 				BDDF16662E00218D00530378 /* Review.swift */,
 			);
-			path = Models;
+			path = Entity;
 			sourceTree = "<group>";
 		};
-		BDDF16552E001C6600530378 /* UseCases */ = {
+		BDDF16552E001C6600530378 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 				BDDF16362E00069300530378 /* FetchProductsUseCase.swift */,
 			);
-			path = UseCases;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
-		BDDF16562E001CF500530378 /* Remote */ = {
+		BDDF16562E001CF500530378 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				BDDF16572E001CFB00530378 /* API */,
+				BDDF16382E0006A600530378 /* ProductRepositoryImpl.swift */,
 			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		BDDF16572E001CFB00530378 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				BDDF16382E0006A600530378 /* ProductAPI.swift */,
-			);
-			path = API;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		BDDF165C2E001F1400530378 /* Network */ = {
@@ -474,7 +488,8 @@
 				BDDF166C2E00248800530378 /* ProductReviewsViewModel.swift in Sources */,
 				BDDF16332E00065C00530378 /* AppCoordinator.swift in Sources */,
 				BDDF16352E00068300530378 /* Product.swift in Sources */,
-				BDDF16392E0006A600530378 /* ProductAPI.swift in Sources */,
+				BDDF16392E0006A600530378 /* ProductRepositoryImpl.swift in Sources */,
+				BD0201A12E00559C00A71020 /* ProductRepository.swift in Sources */,
 				BDDF163B2E0006CF00530378 /* ProductsListViewModel.swift in Sources */,
 				BDDF163F2E0006F700530378 /* ProductsListView.swift in Sources */,
 				BDDF16072E0005D400530378 /* MainApp.swift in Sources */,
@@ -485,6 +500,7 @@
 				BDDF165E2E001F1E00530378 /* APIClientProtocol.swift in Sources */,
 				BDDF16592E001D9C00530378 /* ProductDTO.swift in Sources */,
 				BDDF16632E00203000530378 /* Constants.swift in Sources */,
+				BD0201A42E005AF100A71020 /* DIContainer.swift in Sources */,
 				BDDF166E2E00249E00530378 /* ProductReviewsView.swift in Sources */,
 				BDDF16722E0028C400530378 /* View+Extensions.swift in Sources */,
 			);
