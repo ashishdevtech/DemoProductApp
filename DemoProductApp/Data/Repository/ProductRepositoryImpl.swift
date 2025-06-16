@@ -1,17 +1,14 @@
 //
-//  ProductAPI.swift
+//  ProductRepositoryImpl.swift
 //  DemoProductApp
 //
 //  Created by Ashish Pal on 16/06/25.
 //
 
 import Foundation
+import Combine
 
-protocol ProductAPIProtocol {
-    func fetchProducts() async throws -> [Product]
-}
-
-final class ProductAPI: ProductAPIProtocol {
+final class ProductRepositoryImpl: ProductRepository {
     private let apiClient: APIClientProtocol
     private let baseURL = URL(string: APIConstants.baseURL + APIConstants.productsEndpoint)!
 
@@ -19,10 +16,12 @@ final class ProductAPI: ProductAPIProtocol {
         self.apiClient = apiClient
     }
 
-    func fetchProducts() async throws -> [Product] {
+    func fetchProducts() -> AnyPublisher<[Product], Error> {
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
-        let dto: ProductResponseDTO = try await apiClient.request(request)
-        return dto.toDomainModel()
+
+        return apiClient.request(request, responseType: ProductResponseDTO.self)
+            .map { $0.toDomainModel() }
+            .eraseToAnyPublisher()
     }
 }

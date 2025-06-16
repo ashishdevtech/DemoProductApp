@@ -39,8 +39,19 @@ struct ProductsListView: View {
                 }
             }
         }
-        .task {
-            await viewModel.loadProducts()
+        .onAppear {
+            if viewModel.products.isEmpty {
+                viewModel.loadProducts()
+            }
+        }
+        .overlay {
+            if viewModel.isLoading {
+                ProgressView()
+            } else if let error = viewModel.errorMessage {
+                Text(error)
+                    .foregroundColor(.red)
+                    .padding()
+            }
         }
         .navigationTitle("Products")
     }

@@ -13,7 +13,6 @@ struct ProductDTO: Codable {
     let price: Double
     let thumbnail: String
     let description: String
-    let reviews: [ReviewDTO]
 
     func toDomainModel() -> Product {
         Product(
@@ -21,8 +20,7 @@ struct ProductDTO: Codable {
             title: title,
             price: price,
             thumbnail: thumbnail,
-            description: description,
-            reviews: reviews.map { $0.toDomainModel() }
+            description: description
         )
     }
 }

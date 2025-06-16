@@ -9,7 +9,6 @@ import Foundation
 
 enum ProductDestination: Hashable {
     case productDetail(product: Product)
-    case productReviews(reviews: [Review])
 }
 
 final class ProductListRouter: ObservableObject {

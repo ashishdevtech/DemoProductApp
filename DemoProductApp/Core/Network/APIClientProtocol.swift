@@ -5,8 +5,9 @@
 //  Created by Ashish Pal on 16/06/25.
 //
 
+import Combine
 import Foundation
 
 protocol APIClientProtocol {
-    func request<T: Decodable>(_ endpoint: URLRequest) async throws -> T
+    func request<T: Decodable>(_ request: URLRequest, responseType: T.Type) -> AnyPublisher<T, Error>
 }

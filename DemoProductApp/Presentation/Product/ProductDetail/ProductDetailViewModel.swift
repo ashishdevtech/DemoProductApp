@@ -9,14 +9,8 @@ import Foundation
 
 final class ProductDetailViewModel: ObservableObject {
     @Published var product: Product
-    private let coordinator: ProductCoordinator
 
-    init(product: Product, coordinator: ProductCoordinator) {
+    init(product: Product) {
         self.product = product
-        self.coordinator = coordinator
-    }
-
-    func goToReviews() {
-        coordinator.push(.productReviews(reviews: product.reviews))
     }
 }
