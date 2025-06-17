@@ -23,12 +23,6 @@ final class MockFetchProductsUseCase: FetchProductsUseCase {
     }
 }
 
-final class DummyCoordinator: ProductCoordinator {
-    func push(_ destination: ProductDestination) { }
-    func pop() { }
-    func popToRoot() { }
-}
-
 final class MockFailingFetchProductsUseCase: FetchProductsUseCase {
     func execute() -> AnyPublisher<[Product], Error> {
         Fail(error: URLError(.badServerResponse))

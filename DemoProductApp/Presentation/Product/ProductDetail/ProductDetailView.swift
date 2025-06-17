@@ -16,12 +16,6 @@ struct ProductDetailView: View {
                 thumbnailView(name: viewModel.thumbnail)
                 titleView(title: viewModel.title)
                 descriptionView(description: viewModel.description)
-                Button {
-                    
-                } label: {
-                    
-                }
-
             }
             .padding()
         }
@@ -66,29 +60,5 @@ extension ProductDetailView {
     func descriptionView(description: String) -> some View {
         Text(description)
             .font(.body)
-    }
-}
-
-///////////////////
-///
-struct NewProductDetailView: View {
-    @ObservedObject var viewModel: ProductDetailViewModel
-    var coordinator: ProductDetailCoordinator
-
-    var body: some View {
-        VStack(spacing: 16) {
-            // Existing product details UI...
-
-            Button("See Reviews") {
-//                coordinator.showReviews(for: viewModel.product)
-            }
-            .padding()
-
-            Button("Edit Product") {
-//                coordinator.editProduct(viewModel.product)
-            }
-            .padding()
-        }
-        .navigationTitle("Product Detail")
     }
 }

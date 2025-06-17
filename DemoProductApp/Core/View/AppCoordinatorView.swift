@@ -9,23 +9,14 @@ import SwiftUI
 
 struct AppCoordinatorView: View {
     @StateObject private var coordinator = AppCoordinator()
-    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack(path: $path) {
-            ProductsListView(
-                viewModel: ProductsListViewModel(
-                    fetchProductsUseCase: DIContainer().fetchProductsUseCase
-                ),
-                router: ProductListRouter(coordinator: coordinator)
-            )
-            .navigationDestination(for: ProductDestination.self) { destination in
-                coordinator.buildView(for: destination)
-            }
+        NavigationStack(path: $coordinator.path) {
+            coordinator.build(screen: .productsList)
+                .navigationDestination(for: Screen.self) { screen in
+                    coordinator.build(screen: screen)
+                }
         }
         .environmentObject(coordinator)
-        .onAppear {
-            coordinator.setNavigationPathBinding($path)
-        }
     }
 }

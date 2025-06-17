@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProductsListView: View {
     @ObservedObject var viewModel: ProductsListViewModel
-    @ObservedObject var router: ProductListRouter
+    @EnvironmentObject private var coordinator: AppCoordinator
 
     var body: some View {
         List(viewModel.products) { product in
             Button {
-                router.goToDetail(for: product)
+                coordinator.push(.productDetail(product: product))
             } label: {
                 HStack {
                     thumbnailView(name: product.thumbnail)
@@ -81,27 +81,3 @@ extension ProductsListView {
         }
     }
 }
-
-/////
-///
-struct NewProductListView: View {
-    @StateObject var viewModel: ProductViewModel
-    let coordinator: ProductListCoordinator
-
-    var body: some View {
-        NavigationView {
-            List(viewModel.products, id: \.id) { product in
-                Button(action: {
-                    coordinator.showProductDetail(for: product)
-                }) {
-                    Text(product.title)
-                }
-            }
-            .navigationTitle("Products")
-            .onAppear {
-                viewModel.fetchProducts()
-            }
-        }
-    }
-}
-

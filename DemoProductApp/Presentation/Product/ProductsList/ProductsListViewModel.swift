@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-@MainActor
 final class ProductsListViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
@@ -35,25 +34,6 @@ final class ProductsListViewModel: ObservableObject {
             } receiveValue: { [weak self] products in
                 self?.products = products
             }
-            .store(in: &cancellables)
-    }
-}
-
-class ProductViewModel: ObservableObject {
-    @Published var products: [Product] = []
-    private let fetchProductsUseCase: FetchProductsUseCase
-    private var cancellables = Set<AnyCancellable>()
-
-    init(fetchProductsUseCase: FetchProductsUseCase) {
-        self.fetchProductsUseCase = fetchProductsUseCase
-    }
-
-    func fetchProducts() {
-        fetchProductsUseCase.execute()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] products in
-                self?.products = products
-            })
             .store(in: &cancellables)
     }
 }

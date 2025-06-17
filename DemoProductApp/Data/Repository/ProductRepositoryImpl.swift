@@ -20,10 +20,9 @@ final class ProductRepositoryImpl: ProductRepository {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        let apiRequest = APIRequest(url: url, method: "GET")
         
-        return apiClient.request(request, responseType: ProductResponseDTO.self)
+        return apiClient.request(apiRequest.urlRequest, responseType: ProductResponseDTO.self)
             .map { $0.toDomainModel() }
             .eraseToAnyPublisher()
     }
