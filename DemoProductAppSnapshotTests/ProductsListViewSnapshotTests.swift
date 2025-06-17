@@ -23,10 +23,8 @@ final class ProductsListViewSnapshotTests: XCTestCase {
         let viewModel = ProductsListViewModel(fetchProductsUseCase: mockUseCase)
         viewModel.products = mockProducts
 
-        let router = ProductListRouter(coordinator: DummyCoordinator())
-
         let view = NavigationView {
-            ProductsListView(viewModel: viewModel, router: router)
+            ProductsListView(viewModel: viewModel)
         }
 
         assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone13)))
@@ -34,8 +32,7 @@ final class ProductsListViewSnapshotTests: XCTestCase {
     
     func test_ProductsListView_withError() {
         let viewModel = ProductsListViewModel(fetchProductsUseCase: MockFailingFetchProductsUseCase())
-        let router = ProductListRouter(coordinator: DummyCoordinator())
-        let view = ProductsListView(viewModel: viewModel, router: router)
+        let view = ProductsListView(viewModel: viewModel)
         
         viewModel.loadProducts()
         

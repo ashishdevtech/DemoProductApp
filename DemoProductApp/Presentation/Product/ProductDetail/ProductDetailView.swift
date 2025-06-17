@@ -12,31 +12,53 @@ struct ProductDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                AsyncImage(url: URL(string: viewModel.product.thumbnail)) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image.resizable().aspectRatio(contentMode: .fit)
-                    case .failure(_):
-                        Color.red
-                    default:
-                        ProgressView()
-                    }
-                }
-                .frame(height: 200)
-                .cornerRadius(12)
-
-                Text(viewModel.product.title)
-                    .font(.title)
-
-                Text(viewModel.product.price.currencyFormatted())
-                    .font(.headline)
-
-                Text(viewModel.product.description)
-                    .font(.body)
+            VStack(spacing: SizeConstants.spacing) {
+                thumbnailView(name: viewModel.thumbnail)
+                titleView(title: viewModel.title)
+                descriptionView(description: viewModel.description)
             }
             .padding()
         }
-        .navigationTitle("Product Detail")
+        .navigationTitle(StringConstants.productDetailTitle)
+    }
+}
+
+extension ProductDetailView {
+    enum SizeConstants {
+        static let spacing: CGFloat = 16
+        static let imageHeight: CGFloat = 200
+        static let imageCornerRadius: CGFloat = 12
+    }
+    
+    func thumbnailView(name: String) -> some View {
+        AsyncImage(url: URL(string: name)) { phase in
+            switch phase {
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+            case .failure(_):
+                Color.red
+            default:
+                ProgressView()
+            }
+        }
+        .frame(height: SizeConstants.imageHeight)
+        .cornerRadius(SizeConstants.imageCornerRadius)
+    }
+    
+    func titleView(title: String) -> some View {
+        Text(title)
+            .font(.title)
+    }
+    
+    func priceView(price: Double) -> some View {
+        Text(price.currencyFormatted())
+            .font(.headline)
+    }
+    
+    func descriptionView(description: String) -> some View {
+        Text(description)
+            .font(.body)
     }
 }

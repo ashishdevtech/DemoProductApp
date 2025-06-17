@@ -8,33 +8,30 @@
 import SwiftUI
 
 final class AppCoordinator: ObservableObject {
-    private var pathBinding: Binding<NavigationPath>?
+    @Published var path = NavigationPath()
+    
+    let productsListViewModel = ProductsListViewModel(fetchProductsUseCase: DIContainer().fetchProductsUseCase)
 
-    func setNavigationPathBinding(_ binding: Binding<NavigationPath>) {
-        self.pathBinding = binding
+    func push(_ screen: Screen) {
+        path.append(screen)
+    }
+    
+    func pop() {
+        path.removeLast()
+    }
+    
+    func popToRoot() {
+        path.removeLast(path.count)
     }
 
-    @MainActor
-    func buildView(for destination: ProductDestination) -> some View {
-        switch destination {
+    @ViewBuilder
+    func build(screen: Screen) -> some View {
+        switch screen {
+        case .productsList:
+            ProductsListView(viewModel: productsListViewModel)
         case .productDetail(let product):
             let viewModel = ProductDetailViewModel(product: product)
-            return ProductDetailView(viewModel: viewModel)
+            ProductDetailView(viewModel: viewModel)
         }
-    }
-
-}
-
-extension AppCoordinator: ProductCoordinator {
-    func push(_ destination: ProductDestination) {
-        pathBinding?.wrappedValue.append(destination)
-    }
-
-    func pop() {
-        pathBinding?.wrappedValue.removeLast()
-    }
-
-    func popToRoot() {
-        pathBinding?.wrappedValue.removeLast(pathBinding?.wrappedValue.count ?? 0)
     }
 }

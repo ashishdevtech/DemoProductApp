@@ -9,3 +9,8 @@ enum APIConstants {
     static let baseURL = "https://dummyjson.com"
     static let productsEndpoint = "/products"
 }
+
+enum StringConstants {
+    static let productsListTitle = "Products"
+    static let productDetailTitle = "Product Detail"
+}

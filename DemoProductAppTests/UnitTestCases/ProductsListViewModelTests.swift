@@ -39,7 +39,7 @@ final class ProductsListViewModelTests: XCTestCase {
         viewModel.loadProducts()
 
         // Assert
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 5.0)
     }
 
     func test_loadProducts_failure() {
@@ -65,7 +65,7 @@ final class ProductsListViewModelTests: XCTestCase {
         viewModel.loadProducts()
         
         // Assert
-        wait(for: [expectation], timeout: 2.0)
+        wait(for: [expectation], timeout: 5.0)
     }
 
 

@@ -9,32 +9,18 @@ import SwiftUI
 
 struct ProductsListView: View {
     @ObservedObject var viewModel: ProductsListViewModel
-    @ObservedObject var router: ProductListRouter
+    @EnvironmentObject private var coordinator: AppCoordinator
 
     var body: some View {
         List(viewModel.products) { product in
             Button {
-                router.goToDetail(for: product)
+                coordinator.push(.productDetail(product: product))
             } label: {
                 HStack {
-                    AsyncImage(url: URL(string: product.thumbnail)) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image.resizable().scaledToFill()
-                        case .failure(_):
-                            Color.red
-                        default:
-                            ProgressView()
-                        }
-                    }
-                    .frame(width: 60, height: 60)
-                    .cornerRadius(8)
-
+                    thumbnailView(name: product.thumbnail)
                     VStack(alignment: .leading) {
-                        Text(product.title)
-                        Text(product.price.currencyFormatted())
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                        titleView(title: product.title)
+                        priceView(price: product.price)
                     }
                 }
             }
@@ -45,14 +31,53 @@ struct ProductsListView: View {
             }
         }
         .overlay {
-            if viewModel.isLoading {
+            overlayView
+        }
+        .navigationTitle(StringConstants.productsListTitle)
+    }
+}
+
+extension ProductsListView {
+    enum SizeConstants {
+        static let imageWidth: CGFloat = 60
+        static let imageCornerRadius: CGFloat = 8
+    }
+    
+    func thumbnailView(name: String) -> some View {
+        AsyncImage(url: URL(string: name)) { phase in
+            switch phase {
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+            case .failure(_):
+                Color.red
+            default:
                 ProgressView()
-            } else if let error = viewModel.errorMessage {
-                Text(error)
-                    .foregroundColor(.red)
-                    .padding()
             }
         }
-        .navigationTitle("Products")
+        .frame(width: SizeConstants.imageWidth)
+        .cornerRadius(SizeConstants.imageCornerRadius)
+    }
+    
+    func titleView(title: String) -> some View {
+        Text(title)
+    }
+    
+    func priceView(price: Double) -> some View {
+        Text(price.currencyFormatted())
+            .font(.subheadline)
+            .foregroundColor(.gray)
+    }
+    
+    @ViewBuilder
+    var overlayView: some View {
+        if viewModel.isLoading {
+            ProgressView()
+        } else if let error = viewModel.errorMessage {
+            Text(error)
+                .foregroundColor(.red)
+                .padding()
+        }
     }
 }
