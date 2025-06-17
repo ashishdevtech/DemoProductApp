@@ -38,3 +38,22 @@ final class ProductsListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
+class ProductViewModel: ObservableObject {
+    @Published var products: [Product] = []
+    private let fetchProductsUseCase: FetchProductsUseCase
+    private var cancellables = Set<AnyCancellable>()
+
+    init(fetchProductsUseCase: FetchProductsUseCase) {
+        self.fetchProductsUseCase = fetchProductsUseCase
+    }
+
+    func fetchProducts() {
+        fetchProductsUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] products in
+                self?.products = products
+            })
+            .store(in: &cancellables)
+    }
+}

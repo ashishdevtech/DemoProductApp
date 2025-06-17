@@ -38,3 +38,62 @@ extension AppCoordinator: ProductCoordinator {
         pathBinding?.wrappedValue.removeLast(pathBinding?.wrappedValue.count ?? 0)
     }
 }
+
+///////////////////
+///
+import SwiftUI
+
+enum NewProductDestination: Hashable {
+    case productList
+    case productDetail(Product)
+//    case productReviews(Product)
+//    case editProduct(Product)
+//    case addProduct
+}
+
+
+class NewAppCoordinator: ObservableObject {
+    @Published var navigationPath = NavigationPath()
+    
+    func start() -> some View {
+        ProductListCoordinator().start()
+    }
+}
+
+import SwiftUI
+
+class ProductListCoordinator: ObservableObject {
+    @Published var navigationPath = NavigationPath()
+
+    func start() -> some View {
+        let viewModel = ProductViewModel(fetchProductsUseCase: DIContainer().fetchProductsUseCase)
+        return NewProductListView(viewModel: viewModel, coordinator: self)
+    }
+
+    func showProductDetail(for product: Product) {
+        navigationPath.append(product)
+    }
+}
+
+import SwiftUI
+
+class ProductDetailCoordinator: ObservableObject {
+    private let product: Product
+
+    init(product: Product) {
+        self.product = product
+    }
+
+    func start() -> some View {
+        let viewModel = ProductDetailViewModel(product: product)
+        return NewProductDetailView(viewModel: viewModel, coordinator: self)
+    }
+
+//    func showReviews() -> some View {
+//        ReviewsCoordinator(product: product).start()
+//    }
+//
+//    func editProduct() -> some View {
+//        EditProductCoordinator(product: product).start()
+//    }
+}

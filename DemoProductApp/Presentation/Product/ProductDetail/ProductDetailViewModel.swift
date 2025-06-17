@@ -14,3 +14,21 @@ final class ProductDetailViewModel: ObservableObject {
         self.product = product
     }
 }
+
+extension ProductDetailViewModel {
+    var thumbnail: String {
+        product.thumbnail
+    }
+    
+    var title: String {
+        product.title
+    }
+    
+    var description: String {
+        product.description
+    }
+    
+    var price: String {
+        product.price.currencyFormatted()
+    }
+}

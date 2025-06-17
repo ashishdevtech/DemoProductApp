@@ -15,7 +15,7 @@ struct AppCoordinatorView: View {
         NavigationStack(path: $path) {
             ProductsListView(
                 viewModel: ProductsListViewModel(
-                    fetchProductsUseCase: DIContainer.shared.fetchProductsUseCase
+                    fetchProductsUseCase: DIContainer().fetchProductsUseCase
                 ),
                 router: ProductListRouter(coordinator: coordinator)
             )

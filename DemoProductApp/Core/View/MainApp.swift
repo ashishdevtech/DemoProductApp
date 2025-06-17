@@ -15,3 +15,19 @@ struct MainApp: App {
         }
     }
 }
+
+//@main
+//struct ProductListApp: App {
+//    @StateObject private var appCoordinator = NewAppCoordinator()
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            NavigationStack(path: $appCoordinator.navigationPath) {
+//                appCoordinator.start()
+//                    .navigationDestination(for: Product.self) { product in
+//                        ProductDetailCoordinator(product: product).start()
+//                    }
+//            }
+//        }
+//    }
+//}

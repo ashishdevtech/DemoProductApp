@@ -27,11 +27,35 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BDDF16122E0005DB00530378"
+            BuildableName = "DemoProductAppTests.xctest"
+            BlueprintName = "DemoProductAppTests"
+            ReferencedContainer = "container:DemoProductApp.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BDDF16022E0005D400530378"
+            BuildableName = "DemoProductApp.app"
+            BlueprintName = "DemoProductApp"
+            ReferencedContainer = "container:DemoProductApp.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BD0201B52E006F9900A71020"
+            BuildableName = "DemoProductAppSnapshotTests.xctest"
+            BlueprintName = "DemoProductAppSnapshotTests"
+            ReferencedContainer = "container:DemoProductApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO"
-            parallelizable = "YES">
+            parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDDF16122E0005DB00530378"
@@ -42,7 +66,7 @@
          </TestableReference>
          <TestableReference
             skipped = "NO"
-            parallelizable = "YES">
+            parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BD0201B52E006F9900A71020"

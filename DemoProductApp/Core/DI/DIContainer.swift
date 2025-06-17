@@ -8,9 +8,7 @@
 import Foundation
 
 final class DIContainer {
-    static let shared = DIContainer()
-
-    private init() {}
+    init() {}
 
     // MARK: - Repositories
     lazy var productRepository: ProductRepository = {
